@@ -1,0 +1,10 @@
+Batch ID,Vessel,Event,Value,Unit,Recorded At
+B-501,FV-1,Knockout,12.5,bbl,2026-01-15 08:30
+B-501,FV-1,Gravity,1.048,SG,2026-01-16 07:00
+B-501,FV-1,Gravity,1.032,SG,2026-01-18 07:00
+B-501,FV-1,Transfer to BBT,11.8,bbl,2026-01-22 14:00
+B-502,FV-2,Knockout,15.0,bbl,2026-01-17 09:15
+B-502,FV-2,Gravity,1.052,SG,2026-01-18 07:00
+B-502,FV-2,pH,4.2,—,2026-01-19 06:45
+B-503,FV-1,Knockout,12.5,bbl,2026-01-20 08:00
+B-503,FV-1,Gravity,1.046,SG,2026-01-21 07:00

@@ -1,0 +1,33 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed-test-ledger": "node seed_test_ledger.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.991.0",
+    "aws-sdk": "^2.1693.0",
+    "bcryptjs": "^3.0.3",
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^16.4.5",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "marked": "^17.0.3",
+    "node-fetch": "^2.7.0",
+    "openai": "^4.0.0",
+    "sqlite3": "^5.1.7",
+    "stripe": "^20.2.0",
+    "uuid": "^13.0.0"
+  }
+}

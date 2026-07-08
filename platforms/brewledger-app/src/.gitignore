@@ -1,0 +1,34 @@
+# Brewster Mobile App - App-specific .gitignore
+# This file complements the root .gitignore with app-specific rules
+
+# App-specific build outputs
+dist/
+dist-ssr/
+*.local
+
+# App-specific test outputs
+coverage/
+.vitest/
+
+# App-specific cache
+.vite/
+
+# App-specific IDE files (if different from root)
+# Note: Root .gitignore already covers .vscode/, .idea/, etc.
+
+# App-specific temporary files
+*.tmp
+*.temp
+
+# App-specific environment files
+.env.local
+.env.development.local
+.env.production.local
+.env.test.local
+
+# Note: Most common patterns are handled in the root .gitignore:
+# - node_modules/
+# - logs/
+# - package-lock.json
+# - .DS_Store, Thumbs.db, etc.
+# - General build outputs

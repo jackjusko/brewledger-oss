@@ -1,0 +1,74 @@
+# Brewster Backend API - App-specific .gitignore
+# This file complements the root .gitignore with app-specific rules
+
+# Database files
+database.sqlite
+database.sqlite-journal
+database.sqlite-wal
+database.sqlite-shm
+*.db
+*.db3
+
+# Log files (complementing root logs/)
+*.log
+access.log
+error.log
+combined.log
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Uploads directory (if used)
+uploads/
+storage/
+
+# SSL certificates (if self-signed for development)
+*.pem
+*.key
+*.crt
+*.csr
+
+# Session files
+*.session
+sessions/
+
+# Cache files
+.cache/
+*.cache
+
+# Test outputs
+coverage/
+.nyc_output/
+
+# Development runtime files
+*.pid
+*.sock
+
+# IDE/Editor files (if different from root)
+# Note: Root .gitignore already covers .vscode/, .idea/, etc.
+
+# Note: Most common patterns are handled in the root .gitignore:
+# - node_modules/
+# - package-lock.json
+# - .DS_Store, Thumbs.db, etc.
+# - General build outputs
+
+# Backend-specific development files
+# These are files that should not be committed but are needed for development
+config/local.js
+config/local.json
+config/development.js
+config/development.json
+
+# Stripe webhook testing files (if any)
+stripe-webhook-test-*.json

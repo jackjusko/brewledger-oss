@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <style>
+  /* Prevent document-level scroll; App.vue main element handles scrolling */
+  html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  /* Global Safe Area Variables */
+  :root {
+    --sat: env(safe-area-inset-top);
+    --sab: env(safe-area-inset-bottom);
+    --sal: env(safe-area-inset-left);
+    --sar: env(safe-area-inset-right);
+  }
+
+  /* #app is a viewport-sized mount point; scroll happens in App.vue main */
+  #app {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  /* Apply directly to body to avoid content hiding behind notch */
+  #container {
+    height: 100%;
+    overflow: hidden;
+    padding-bottom: var(--sab);
+    padding-left: var(--sal);
+    padding-right: var(--sar);
+    
+  }
+  </style>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  
+    <title>brewster</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="app"></div>
+    </div>
+    
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

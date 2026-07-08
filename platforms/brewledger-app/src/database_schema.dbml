@@ -1,0 +1,203 @@
+Project Brewster {
+  database_type: 'SQLite'
+  Note: 'Brewery Inventory Management System'
+}
+
+Table orgs {
+  id text [pk]
+  name text
+  created_at text
+  created_by_user_id text
+  created_by_user_name text
+  max_locations integer [default: 10]
+}
+
+Table users {
+  id text [pk]
+  org_id text [ref: > orgs.id]
+  email text [unique]
+  password_hash text
+  created_at text
+  name text
+  role text [default: 'user']
+}
+
+Table sessions {
+  token text [pk]
+  user_id text [ref: > users.id]
+  org_id text
+  created_at text
+}
+
+// ========================================================
+// Entity Tables
+// Most entities store their core data in a JSON blob ('data' column).
+// Relationships denoted in comments are logical, enforced by application code.
+// ========================================================
+
+Table items {
+  id text [pk]
+  org_id text [ref: > orgs.id]
+  updated_at text
+  server_updated_at text
+  version integer
+  data text [note: 'JSON: name, category, default_location_id, unit']
+}
+
+Table locations {
+  id text [pk]
+  org_id text [ref: > orgs.id]
+  updated_at text
+  server_updated_at text
+  version integer
+  data text [note: 'JSON: name']
+}
+
+Table batches {
+  id text [pk]
+  org_id text [ref: > orgs.id]
+  updated_at text
+  server_updated_at text
+  version integer
+  data text [note: 'JSON: name, batch_date, status, vessel_id, planned_volume']
+}
+
+Table count_sessions {
+  id text [pk]
+  org_id text [ref: > orgs.id]
+  updated_at text
+  server_updated_at text
+  version integer
+  data text [note: 'JSON: location_id, status']
+}
+
+Table vessels {
+  id text [pk]
+  org_id text [ref: > orgs.id]
+  updated_at text
+  server_updated_at text
+  version integer
+  data text [note: 'JSON: name, type']
+}
+
+Table categories {
+  id text [pk]
+  org_id text [ref: > orgs.id]
+  updated_at text
+  server_updated_at text
+  version integer
+  data text [note: 'JSON: name']
+}
+
+Table batch_additions {
+  id text [pk]
+  org_id text [ref: > orgs.id]
+  updated_at text
+  server_updated_at text
+  version integer
+  data text [note: 'JSON: batch_id, item_id, event_type']
+}
+
+Table batch_readings {
+  id text [pk]
+  org_id text [ref: > orgs.id]
+  updated_at text
+  server_updated_at text
+  version integer
+  data text [note: 'JSON: batch_id, reading_type, value']
+}
+
+Table packaging_runs {
+  id text [pk]
+  org_id text [ref: > orgs.id]
+  updated_at text
+  server_updated_at text
+  version integer
+  data text [note: 'JSON: batch_id, format, units_count']
+}
+
+Table variance_events {
+  id text [pk]
+  org_id text [ref: > orgs.id]
+  updated_at text
+  server_updated_at text
+  version integer
+  data text [note: 'JSON: item_id, location_id, count_session_id, reason']
+}
+
+Table par_levels {
+  id text [pk]
+  org_id text [ref: > orgs.id]
+  updated_at text
+  server_updated_at text
+  version integer
+  data text [note: 'JSON: item_id, location_id, min_qty']
+}
+
+Table allocations {
+  id text [pk]
+  org_id text [ref: > orgs.id]
+  updated_at text
+  server_updated_at text
+  version integer
+  data text [note: 'JSON: batch_id, item_id, location_id, quantity']
+}
+
+Table recipes {
+  id text [pk]
+  org_id text [ref: > orgs.id]
+  updated_at text
+  server_updated_at text
+  version integer
+  data text [note: 'JSON: name']
+}
+
+Table recipe_items {
+  id text [pk]
+  org_id text [ref: > orgs.id]
+  updated_at text
+  server_updated_at text
+  version integer
+  data text [note: 'JSON: recipe_id, item_id, quantity, unit']
+}
+
+Table batch_milestones {
+  id text [pk]
+  org_id text [ref: > orgs.id]
+  updated_at text
+  server_updated_at text
+  version integer
+  data text [note: 'JSON: batch_id, milestone_type, occurred_at, completed']
+}
+
+// ========================================================
+// Performance & History Tables
+// These have explicit columns for high-frequency access
+// ========================================================
+
+Table ledger_entries {
+  id text [pk]
+  org_id text [ref: > orgs.id]
+  item_id text [ref: > items.id]
+  location_id text [ref: > locations.id]
+  batch_id text [ref: > batches.id]
+  transfer_group_id text
+  reversal_group_id text
+  reversed_of_ledger_id text
+  created_at text
+  server_updated_at text
+  version integer
+  data text [note: 'JSON: type, quantity, note']
+}
+
+Table onhand_cache {
+  org_id text [ref: > orgs.id]
+  item_id text [ref: > items.id]
+  location_id text [ref: > locations.id]
+  quantity real
+  last_updated text
+  
+  indexes {
+    (org_id, item_id, location_id) [pk]
+  }
+}

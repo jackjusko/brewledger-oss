@@ -1,0 +1,13 @@
+{
+  "appId": "com.getbrewledger.app",
+  "appName": "BrewLedger",
+  "webDir": "dist",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": true
+    },
+	"StatusBar": {
+      "overlay": false
+    }
+  }
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrewLedger – Master network graph</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true, flowchart: { useMaxWidth: true, htmlLabels: true } });
+  </script>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 1rem; background: #1e1e1e; color: #ddd; }
+    h1 { font-size: 1.25rem; }
+    .mermaid { background: #252526; padding: 1rem; border-radius: 8px; overflow: auto; }
+  </style>
+</head>
+<body>
+  <h1>BrewLedger – Master network (undirected node graph)</h1>
+  <p>Open this file in a browser to see the graph. From the repo root: <code>start docs/diagram-preview.html</code> or double-click the file.</p>
+  <div class="mermaid">
+flowchart LR
+  subgraph server [Server]
+    Express
+    SQLite
+    InitDB
+    Migrations
+    AuthRoutes
+    BillingRoutes
+    SyncRoute
+    BreweryInfoAPI
+    StripeWebhook
+    AIChat
+  end
+
+  subgraph mobile [Mobile app]
+    MobileApp
+    MobileViews
+    MobileRepos
+    MobileAuthService
+    MobileSyncService
+    IndexedDB
+    Dexie
+    Capacitor
+    Vue
+    Vite
+  end
+
+  subgraph console [Console app]
+    ConsoleApp
+    ConsoleViews
+    ConsoleRepos
+    TTBFormService
+    TTBPDFExportService
+    BreweryInfoService
+    ConsoleAuthService
+    ConsoleSyncService
+    Blog
+    Landing
+  end
+
+  subgraph data [Data and entities]
+    Ledger
+    Items
+    Locations
+    Batches
+    BatchLocations
+    BatchReadings
+    BatchAdditions
+    BatchMilestones
+    Recipes
+    RecipeItems
+    OnhandCache
+    ParLevels
+    VarianceEvents
+    PackagingRuns
+    MilestoneTemplates
+    Categories
+  end
+
+  subgraph auth [Auth and session]
+    Token
+    Session
+    RouterGuards
+  end
+
+  subgraph external [External]
+    Stripe
+    TTB
+  end
+
+  Express --- SQLite
+  Express --- InitDB
+  Express --- AuthRoutes
+  Express --- BillingRoutes
+  Express --- SyncRoute
+  Express --- BreweryInfoAPI
+  Express --- StripeWebhook
+  Express --- AIChat
+  InitDB --- Migrations
+  AuthRoutes --- Token
+  BillingRoutes --- Stripe
+  StripeWebhook --- Stripe
+  SyncRoute --- Ledger
+  BreweryInfoAPI --- BreweryInfoService
+
+  MobileApp --- MobileViews
+  MobileApp --- Vue
+  MobileApp --- Capacitor
+  MobileViews --- MobileRepos
+  MobileRepos --- MobileSyncService
+  MobileRepos --- MobileAuthService
+  MobileRepos --- IndexedDB
+  IndexedDB --- Dexie
+  Dexie --- Ledger
+  Dexie --- Items
+  Dexie --- Locations
+  Dexie --- Batches
+  Dexie --- BatchLocations
+  Dexie --- OnhandCache
+  MobileSyncService --- SyncRoute
+  MobileAuthService --- AuthRoutes
+  MobileAuthService --- Token
+  Token --- Session
+  Session --- RouterGuards
+  Vue --- Vite
+
+  ConsoleApp --- ConsoleViews
+  ConsoleApp --- Landing
+  ConsoleApp --- Blog
+  ConsoleViews --- ConsoleRepos
+  ConsoleRepos --- ConsoleSyncService
+  ConsoleRepos --- ConsoleAuthService
+  ConsoleRepos --- TTBFormService
+  ConsoleRepos --- BreweryInfoService
+  ConsoleSyncService --- SyncRoute
+  ConsoleAuthService --- AuthRoutes
+  ConsoleAuthService --- Token
+  TTBFormService --- Ledger
+  TTBFormService --- OnhandCache
+  TTBFormService --- VarianceEvents
+  TTBFormService --- PackagingRuns
+  TTBFormService --- BatchMilestones
+  TTBFormService --- TTBPDFExportService
+  TTBPDFExportService --- TTB
+  BreweryInfoService --- BreweryInfoAPI
+
+  Ledger --- Items
+  Ledger --- Locations
+  Ledger --- Batches
+  Ledger --- OnhandCache
+  Items --- Categories
+  Items --- ParLevels
+  Locations --- ParLevels
+  Batches --- BatchLocations
+  Batches --- BatchReadings
+  Batches --- BatchAdditions
+  Batches --- BatchMilestones
+  Batches --- PackagingRuns
+  Batches --- MilestoneTemplates
+  BatchLocations --- BatchReadings
+  BatchLocations --- BatchAdditions
+  Recipes --- RecipeItems
+  Recipes --- Batches
+  VarianceEvents --- Ledger
+  PackagingRuns --- Ledger
+  OnhandCache --- Ledger
+  ParLevels --- Items
+  ParLevels --- Locations
+  </div>
+</body>
+</html>

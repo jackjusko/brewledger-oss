@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">BrewLedger</string>
+    <string name="title_activity_main">BrewLedger</string>
+    <string name="package_name">com.getbrewledger.app</string>
+    <string name="custom_url_scheme">com.getbrewledger.app</string>
+</resources>
