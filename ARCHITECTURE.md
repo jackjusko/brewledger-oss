@@ -1,6 +1,10 @@
 # BrewLedger Architecture
 
-High-level overview of the open-source BrewLedger stack. For detailed Mermaid diagrams, see [docs/SYSTEMS-AND-IMPLEMENTATION-DIAGRAM.md](docs/SYSTEMS-AND-IMPLEMENTATION-DIAGRAM.md).
+High-level overview of the open-source BrewLedger stack.
+
+- [docs/getting-started.md](docs/getting-started.md) — Local setup and first login
+- [docs/deployment.md](docs/deployment.md) — Production checklist
+- [docs/SYSTEMS-AND-IMPLEMENTATION-DIAGRAM.md](docs/SYSTEMS-AND-IMPLEMENTATION-DIAGRAM.md) — Detailed Mermaid diagrams
 
 ## Components
 
@@ -62,8 +66,8 @@ Console `TTBFormService` aggregates ledger and batch data into Form 5130.9 field
 
 ## Deployment notes
 
-- Default local: HTTP on port 3000, console on 5174.
-- Production: set `TLS_KEY_PATH` / `TLS_CERT_PATH`, build console (`npm run build`), point `STATIC_DIR` at `platforms/console/dist`.
+- Default local: HTTP on port 3000, console on 5174. See [docs/getting-started.md](docs/getting-started.md).
+- Production: set `TLS_KEY_PATH` / `TLS_CERT_PATH`, build console (`npm run build`), point `STATIC_DIR` at `platforms/console/dist`. See [docs/deployment.md](docs/deployment.md).
 - Blog subsystem removed from OSS release — no `/blog` routes.
 
 ## Removed from OSS release

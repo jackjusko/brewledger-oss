@@ -20,11 +20,13 @@ BrewLedger was built as a full brewery operations platform but did not gain enou
 
 ## Can I run this locally without paying for anything?
 
-Yes. Clone the repo, copy `.env.example` to `.env`, run `node init_db.js` in `server/`, start the server and console. Core features (inventory, batches, ledger, serving, TTB form generation) work without Stripe, QBO, SES, or AI.
+Yes. Clone the repo, copy `.env.example` to `.env`, run `node init_db.js` in `server/`, then start the server and console. See [docs/getting-started.md](docs/getting-started.md) for the full walkthrough.
+
+Core features (inventory, batches, ledger, serving, TTB form generation) work without Stripe, QBO, SES, or AI.
 
 ## Do I need Stripe?
 
-No for core ops. Stripe powers subscription billing in the original product. If `STRIPE_SECRET_KEY` is unset, billing endpoints return 503 and you can use the app without payment gating (trial logic may still exist in the UI — adjust for your deployment).
+No for core ops. Stripe powers subscription billing in the original product. If `STRIPE_SECRET_KEY` is unset, billing endpoints return 503 and you can use the app without payment gating (trial logic may still exist in the UI—adjust for your deployment).
 
 ## Do I need QuickBooks Online?
 
@@ -48,9 +50,13 @@ No. The AI assistant returns 503 when `OPENROUTER_API_KEY` is unset.
 
 Capacitor native folders are included; `node_modules`, `Pods/`, and `build/` artifacts are gitignored.
 
+## How do I deploy to production?
+
+See [docs/deployment.md](docs/deployment.md) for the production checklist: build the console, set `STATIC_DIR`, configure TLS, and update URL-related environment variables.
+
 ## Is there a hosted version at getbrewledger.com?
 
-The original author operated a hosted deployment. **This open-source repo is independent** — no hosted service, uptime guarantee, or support is included. Deploy your own instance or run locally.
+The original author operated a hosted deployment. **This open-source repo is independent**—no hosted service, uptime guarantee, or support is included. Deploy your own instance or run locally.
 
 ## What license applies?
 
@@ -58,11 +64,11 @@ MIT. You may use, modify, and distribute the code with attribution. See [LICENSE
 
 ## How do I report security issues?
 
-Open a GitHub Issue. There is no bug bounty program. Do not commit secrets — use `.env` (gitignored) and `.env.example` as a template.
+See [SECURITY.md](SECURITY.md). There is no bug bounty program. Do not commit secrets—use `.env` (gitignored) and `.env.example` as a template.
 
 ## Will you merge my pull request?
 
-Best-effort. PRs that fix bugs, improve docs, or harden security are welcome. Large feature additions may be reviewed slowly or declined if they don't fit the reference scope.
+Best-effort. PRs that fix bugs, improve docs, or harden security are welcome. Large feature additions may be reviewed slowly or declined if they don't fit the reference scope. See [docs/contributing.md](docs/contributing.md).
 
 ## Data privacy
 
@@ -75,11 +81,3 @@ BrewLedger includes tools to help prepare TTB Form 5130.9 data from your operati
 ## Why was the blog removed?
 
 The blog was editorial content (industry news, guides) separate from the brewery management product. It is not licensed for redistribution in this release and is excluded to keep the public repo focused on application code.
-
-## Relationship to the private repository
-
-This public repository is a **clean export** with fresh git history. It is not a mirror of the private development repo. Internal commit history, blog posts, and dev analysis docs are not included.
-
-## How do I export / update the public repo from a private fork?
-
-If you maintain a private fork with additional changes, run `scripts/prepare-oss-export.ps1` to copy an allowlisted tree to a clean directory, verify no secrets, then commit and push to the public remote.

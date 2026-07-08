@@ -1,106 +1,107 @@
 # BrewLedger
 
-Open-source brewery operations platform: inventory ledger, batch tracking, recipes, TTB Form 5130.9 reporting, serving/taproom workflows, and optional billing integrations.
+Open-source brewery operations platform for inventory, production, compliance, and taproom workflows. BrewLedger is MIT-licensed and self-hosted—you run the API server and web console on your own hardware.
 
-This repository is a **reference implementation** and portfolio project. It is not a hosted SaaS — you run it yourself.
+Brewery operators use BrewLedger to track what they have, what they brewed, and what they served or removed. Developers can clone the repo, run it locally, fork it, or contribute fixes and improvements.
 
 ## What's included
 
 | Component | Path | Description |
 |-----------|------|-------------|
-| API server | `server/` | Express + SQLite backend |
-| Web console | `platforms/console/` | Vue 3 + Vite desktop web app |
-| Mobile app | `platforms/brewledger-app/` | Capacitor 6 (iOS/Android) source |
+| API server | `server/` | Express + SQLite backend (auth, sync, ledger, batches, TTB helpers) |
+| Web console | `platforms/console/` | Vue 3 desktop web app for day-to-day brewery management |
+| Mobile app | `platforms/brewledger-app/` | Capacitor 6 source for iOS and Android (you build and sign binaries) |
 
-See [ARCHITECTURE.md](ARCHITECTURE.md) for a system overview and [FAQ.md](FAQ.md) for detailed answers.
+## Features
 
-## Quick start (local development)
+- **Inventory ledger** — Receive, consume, transfer, and count stock with an append-only transaction history
+- **Batch tracking** — Recipes, vessels, readings, milestones, and production-complete workflows
+- **TTB Form 5130.9** — Tools to aggregate operational data into form field mappings (not legal advice—see [FAQ](FAQ.md))
+- **Serving & taproom** — Tank occupancy, volume tracking, and removal workflows
+- **Multi-device sync** — Offline-first clients (IndexedDB) sync with the server when online
+- **Optional integrations** — Stripe billing, QuickBooks Online, AWS SES email, OpenRouter AI assistant (all degrade gracefully when unset)
 
-### Prerequisites
+## Stack at a glance
 
-- Node.js 18+
-- npm
+| Layer | Technology |
+|-------|------------|
+| API server | Node.js, Express 5, SQLite |
+| Web console | Vue 3, Vite, Tailwind CSS, Dexie (IndexedDB) |
+| Mobile app | Vue 3, Capacitor 6, Dexie (IndexedDB) |
+| Auth | Token-based sessions with bcrypt password hashing |
 
-### 1. Clone and configure
+See [ARCHITECTURE.md](ARCHITECTURE.md) for a system overview.
 
-```bash
-git clone https://github.com/YOUR_USER/brewledger.git
-cd brewledger
-cp .env.example .env
-```
+## Quick start
 
-Edit `.env` if needed. Defaults work for local HTTP on port 3000.
+**Prerequisites:** Node.js 18+ and npm.
 
-### 2. Install dependencies
+1. **Clone and configure**
 
-```bash
-cd server && npm install && cd ..
-cd platforms/console && npm install && cd ../..
-cd platforms/brewledger-app && npm install && cd ../..
-```
+   ```bash
+   git clone <your-fork-or-upstream-url>
+   cd brewledger
+   cp .env.example .env
+   ```
 
-### 3. Initialize the database
+   Defaults work for local HTTP on port 3000. See [docs/getting-started.md](docs/getting-started.md) for details.
 
-```bash
-cd server
-node init_db.js
-```
+2. **Install dependencies**
 
-### 4. Start the API server
+   ```bash
+   cd server && npm install && cd ..
+   cd platforms/console && npm install && cd ../..
+   ```
 
-```bash
-cd server
-npm start
-```
+3. **Initialize the database**
 
-Server runs at `http://localhost:3000`.
+   ```bash
+   cd server
+   node init_db.js
+   ```
 
-### 5. Start the web console
+4. **Start the API server**
 
-In a second terminal:
+   ```bash
+   cd server
+   npm start
+   ```
 
-```bash
-cd platforms/console
-npm run dev
-```
+   Server runs at `http://localhost:3000`.
 
-Console runs at `http://localhost:5174`. Register an account, then log in.
+5. **Start the web console** (second terminal)
 
-### 6. Mobile app (optional)
+   ```bash
+   cd platforms/console
+   npm run dev
+   ```
 
-```bash
-cd platforms/brewledger-app
-npm run build
-npx cap sync
-```
+   Console runs at `http://localhost:5174`. Register an organization, then log in.
 
-Open in Android Studio or Xcode. Point `VITE_API_BASE_URL` at your server (use your LAN IP for device testing).
+For first-login navigation, troubleshooting, and optional mobile setup, see [docs/getting-started.md](docs/getting-started.md).
+
+## Documentation
+
+| Document | Description |
+|----------|-------------|
+| [docs/getting-started.md](docs/getting-started.md) | Full local setup and first-login tour |
+| [docs/deployment.md](docs/deployment.md) | Production checklist (TLS, static build, env vars) |
+| [docs/contributing.md](docs/contributing.md) | How to contribute, run tests, submit PRs |
+| [docs/README.md](docs/README.md) | Documentation index |
+| [FAQ.md](FAQ.md) | Common questions about scope, integrations, and licensing |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | High-level system design |
+| [SECURITY.md](SECURITY.md) | How to report security issues |
 
 ## Optional integrations
 
-Stripe billing, QuickBooks Online, AWS SES email, and the OpenRouter AI assistant are **optional**. When env vars are missing, those features return "not configured" — core brewery ops still work.
+Stripe billing, QuickBooks Online, AWS SES email, and the OpenRouter AI assistant are optional. When environment variables are missing, those features return "not configured"—core brewery operations still work.
 
-See `.env.example` for all variables.
-
-## Publish to GitHub
-
-After running the export script:
-
-```powershell
-cd oss-export
-git -c safe.directory="$PWD" init   # if on a network share
-git add .
-git commit -m "Initial open-source release"
-git branch -M main
-git remote add origin https://github.com/YOUR_USER/brewledger.git
-git push -u origin main
-```
-
-Create the public repo on GitHub first (empty, no README). Use `scripts/prepare-oss-export.ps1 -Force` to refresh the export before each publish.
-
+See [.env.example](.env.example) for all variables.
 
 ## Contributing
 
-Pull requests welcome. This is best-effort maintenance; no SLA on issues or features.
+Pull requests are welcome. See [docs/contributing.md](docs/contributing.md) for setup, test commands, and PR expectations.
 
-Report security concerns via GitHub Issues (no bug bounty).
+## License
+
+MIT — see [LICENSE](LICENSE).

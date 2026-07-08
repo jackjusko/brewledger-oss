@@ -70,6 +70,7 @@ $topLevel = @(
     "FAQ.md",
     "LICENSE",
     "ARCHITECTURE.md",
+    "SECURITY.md",
     ".env.example",
     ".gitignore"
 )
