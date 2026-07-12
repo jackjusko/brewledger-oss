@@ -22,7 +22,7 @@
     "@capacitor/camera": "^6.0.0",
     "@capacitor/core": "^6.0.0",
     "@capacitor/ios": "^6.0.0",
-    "@capacitor/splash-screen": "^6.0.0",
+    "@capacitor/splash-screen": "^8.0.1",
     "axios": "^1.13.2",
     "dayjs": "^1.11.19",
     "dexie": "^4.2.1",
