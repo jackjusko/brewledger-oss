@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/jackjusko/brewledger-oss/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-GPLv3-blue.svg" alt="License: GPLv3" /></a>
+  <a href="https://github.com/jackjusko/brewledger-oss/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg" alt="License: Apache 2.0" /></a>
   <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/node-%3E%3D18-brightgreen.svg" alt="Node.js >= 18" /></a>
   <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-3-42b883.svg" alt="Vue 3" /></a>
   <a href="https://github.com/jackjusko/brewledger-oss/actions/workflows/ci.yml"><img src="https://github.com/jackjusko/brewledger-oss/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
@@ -24,7 +24,7 @@
 
 # BrewLedger
 
-Open-source brewery operations platform for inventory, production, compliance, and taproom workflows. BrewLedger is licensed under GPLv3 and self-hosted—you run the API server and web console on your own hardware.
+Open-source brewery operations platform for inventory, production, compliance, and taproom workflows. BrewLedger is licensed under Apache License 2.0 and self-hosted—you run the API server and web console on your own hardware.
 
 Brewery operators use BrewLedger to track what they have, what they brewed, and what they served or removed. Developers can clone the repo, run it locally, fork it, or contribute fixes and improvements.
 
@@ -139,7 +139,7 @@ Pull requests are welcome—especially bug fixes, documentation improvements, an
 
 ## License
 
-GNU General Public License v3.0 — see [LICENSE](LICENSE).
+Apache License 2.0 — see [LICENSE](LICENSE) and [NOTICE](NOTICE).
 
 ---
 

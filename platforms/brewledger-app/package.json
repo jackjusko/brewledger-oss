@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "BrewLedgerMobile - Capacitor App",
   "private": false,
-  "license": "GPL-3.0-only",
+  "license": "Apache-2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",

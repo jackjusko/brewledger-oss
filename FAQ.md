@@ -56,11 +56,11 @@ See [docs/deployment.md](docs/deployment.md) for the production checklist: build
 
 ## How does this repo relate to getbrewledger.com?
 
-[getbrewledger.com](https://getbrewledger.com) is the commercial / hosted BrewLedger product. **This repository is the self-hosted open-source edition** (GPLv3). You can run the code here on your own hardware with no hosted service, uptime guarantee, or support included. Screenshots and branding in the docs may match the hosted product because they share the same application lineage.
+[getbrewledger.com](https://getbrewledger.com) is the commercial / hosted BrewLedger product. **This repository is the self-hosted open-source edition** (Apache License 2.0). You can run the code here on your own hardware with no hosted service, uptime guarantee, or support included. Screenshots and branding in the docs may match the hosted product because they share the same application lineage.
 
 ## What license applies?
 
-GNU General Public License v3.0 (GPLv3). You may use, modify, and distribute the code under the terms of the license, including sharing source when you distribute modified versions. See [LICENSE](LICENSE).
+Apache License 2.0. You may use, modify, and distribute the code under the terms of the license (including in proprietary products), provided you retain the license and attribution notices. See [LICENSE](LICENSE) and [NOTICE](NOTICE).
 
 ## How do I report security issues?
 

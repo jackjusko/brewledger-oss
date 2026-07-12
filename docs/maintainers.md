@@ -35,7 +35,7 @@ Before merging to `main`:
 - [ ] Change is focused; large features had an issue discussion when appropriate
 - [ ] Docs updated if setup, config, or user-visible behavior changed
 - [ ] No secrets, `.env` files, or credentials in the diff
-- [ ] PR author acknowledged CoC / GPLv3 (checklist on the PR template)
+- [ ] PR author acknowledged CoC / Apache-2.0 (checklist on the PR template)
 
 **When to require tests:** prefer tests for bug fixes that can be unit-tested and for logic changes in console/mobile Vitest suites. Server coverage is still thin (smoke + indirect mobile backend tests)—do not block purely on missing server unit tests, but do not regress the smoke job.
 

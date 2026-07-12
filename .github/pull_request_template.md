@@ -5,7 +5,7 @@
 ## Checklist
 
 - [ ] I agree to the [Code of Conduct](CODE_OF_CONDUCT.md)
-- [ ] I understand contributions are licensed under [GPLv3](LICENSE)
+- [ ] I understand contributions are licensed under [Apache License 2.0](LICENSE)
 - [ ] Change is focused (one logical fix or feature)
 - [ ] Documentation updated if setup, config, or behavior changed
 - [ ] Relevant tests run (`npm test` in `platforms/console/`, `platforms/brewledger-app/`, and/or `server/`)

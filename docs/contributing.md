@@ -91,4 +91,4 @@ Do not open public issues for sensitive vulnerabilities. See [SECURITY.md](../SE
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the [GNU General Public License v3.0](../LICENSE).
+By contributing, you agree that your contributions will be licensed under the [Apache License 2.0](../LICENSE).

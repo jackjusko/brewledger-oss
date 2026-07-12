@@ -14,7 +14,7 @@ Everyone participating is expected to follow the [Code of Conduct](CODE_OF_CONDU
 
 Anyone who opens issues or pull requests.
 
-- Contributions are licensed under the [GNU General Public License v3.0](LICENSE).
+- Contributions are licensed under the [Apache License 2.0](LICENSE).
 - Prefer focused changes. See [docs/contributing.md](docs/contributing.md).
 
 ### Triage

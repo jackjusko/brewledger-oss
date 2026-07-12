@@ -71,6 +71,7 @@ $topLevel = @(
     "README.md",
     "FAQ.md",
     "LICENSE",
+    "NOTICE",
     "ARCHITECTURE.md",
     "SECURITY.md",
     "CODE_OF_CONDUCT.md",
