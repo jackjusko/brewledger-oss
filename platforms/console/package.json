@@ -20,7 +20,7 @@
     "jwt-decode": "^4.0.0",
     "pdf-lib": "^1.17.1",
     "pinia": "^3.0.4",
-    "uuid": "^11.0.3",
+    "uuid": "^14.0.1",
     "vite-plugin-prerenderer": "^1.0.1",
     "vue": "^3.5.24",
     "vue-router": "^4.6.4"
