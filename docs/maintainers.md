@@ -1,111 +1,100 @@
 # Maintainer guide
 
-This document is for people who maintain the public BrewLedger repository from a private development tree. End users and contributors do not need this page.
+Operations guide for people with **triage** or **maintainer** access on the public repository. Role definitions and how to join: [GOVERNANCE.md](../GOVERNANCE.md). Current maintainers: [MAINTAINERS.md](../MAINTAINERS.md).
 
-## Relationship to the private repository
+**Source of truth:** [jackjusko/brewledger-oss](https://github.com/jackjusko/brewledger-oss) on branch `main`. Contributors and co-maintainers work only in this public repo. Do not ask contributors to run private export scripts.
 
-The public repository is a **clean export** with fresh git history. It is not a mirror of the private development repo. Internal commit history, blog posts, and development analysis docs are not included.
+## Triage checklist
 
-## Refreshing the export
+When a new issue or PR arrives:
 
-The export script copies an allowlisted tree into a clean directory, strips secrets and dev artifacts, and scans for credential patterns.
+1. Confirm it follows the [Code of Conduct](../CODE_OF_CONDUCT.md).
+2. Apply labels (`bug`, `enhancement`, `documentation`, `good first issue`, `help wanted`, `security`, `needs-info` as appropriate).
+3. For bugs: ensure reproduction steps and component are clear; ask for more detail and add `needs-info` if not.
+4. Close duplicates with a link to the canonical issue.
+5. Point setup questions to [getting-started.md](getting-started.md) or the [FAQ](../FAQ.md) when that answers the report.
+6. Security reports: do **not** discuss exploit details in public issues—see [SECURITY.md](../SECURITY.md).
 
-**Script:** `scripts/prepare-oss-export.ps1`
+### Good first issues
 
-**Usage:**
+Prefer labeling small, well-scoped work as `good first issue`:
 
-```powershell
-# From the private repo root (parent of scripts/)
-.\scripts\prepare-oss-export.ps1
+- Documentation typos or missing setup steps
+- Test coverage for an existing pure function
+- Narrow UI copy or accessibility fixes with a clear expected result
 
-# Custom output path, overwrite existing
-.\scripts\prepare-oss-export.ps1 -OutputDir "D:\brewledger-public" -Force
-```
+Avoid labeling large refactors, sync-protocol changes, or TTB math changes as first issues.
 
-Default output is `oss-export/` next to the private repo root.
+**Ladder to maintainer:** after several solid merged PRs and CoC alignment, offer **triage**; after sustained triage judgment, offer **write** (see [GOVERNANCE.md](../GOVERNANCE.md)).
 
-### What gets copied
+## Merge rules
 
-Allowlisted top-level paths:
+Before merging to `main`:
 
-- `server/`
-- `platforms/`
-- `docs/` (includes `docs/assets/` — logo, screenshots, social preview)
-- `scripts/`
-- `.github/` (CI workflow, issue templates, PR template)
-- `README.md`, `FAQ.md`, `LICENSE`, `ARCHITECTURE.md`, `SECURITY.md`, `.env.example`, `.gitignore`
+- [ ] CI is green (console, mobile unit tests, server smoke)
+- [ ] Change is focused; large features had an issue discussion when appropriate
+- [ ] Docs updated if setup, config, or user-visible behavior changed
+- [ ] No secrets, `.env` files, or credentials in the diff
+- [ ] PR author acknowledged CoC / GPLv3 (checklist on the PR template)
 
-### What gets excluded
+**When to require tests:** prefer tests for bug fixes that can be unit-tested and for logic changes in console/mobile Vitest suites. Server coverage is still thin (smoke + indirect mobile backend tests)—do not block purely on missing server unit tests, but do not regress the smoke job.
 
-Robocopy excludes directories such as `node_modules`, `dist`, `build`, `.git`, `changes`, `blogrip`, and files such as `.env`, `*.sqlite`, and `ttb.pdf`.
+Prefer squash or rebase merges that keep `main` history readable; match whatever the repo default is set to.
 
-Post-copy removals include blog content paths and generated Capacitor web assets.
+## Releases
 
-### Secret scan
+1. Ensure `main` is green and the changelog-worthy notes are known (PR titles are enough for now).
+2. Create an annotated tag from `main`, for example:
 
-After copy, the script scans for patterns including Discord webhooks, `sk_live_`, `sk_test_`, `whsec_`, AWS `AKIA` keys, and private LAN IPs in markdown. The export fails if any are found—fix the source before publishing.
+   ```bash
+   git checkout main
+   git pull
+   git tag -a v0.1.0 -m "BrewLedger OSS v0.1.0"
+   git push origin v0.1.0
+   ```
 
-## GitHub presence assets
+3. Optionally create a GitHub Release from that tag with a short summary.
 
-Visual and community files for the public repo:
+There is no formal LTS or release train yet. Security fixes land on `main` and should be tagged when practical.
 
-| Path | Purpose |
-|------|---------|
-| `docs/assets/logo.png` | README hero logo |
-| `docs/assets/desktop-console-*.png` | README desktop screenshots |
-| `docs/assets/mobile-app-1.png` | README mobile screenshot |
-| `docs/assets/social-preview.png` | Upload in GitHub repo Settings → Social preview (1280×640) |
-| `.github/workflows/ci.yml` | Console Vitest CI |
-| `.github/ISSUE_TEMPLATE/` | Bug and feature issue forms |
-| `.github/pull_request_template.md` | PR checklist |
+## GitHub repository settings (checklist)
 
-Keep these under the private tree (not only in `oss-export/`) so the next `prepare-oss-export.ps1 -Force` run preserves them.
+Apply these in the GitHub UI (or `gh`) if not already set:
 
-### Public GitHub settings (one-time / occasional)
+- [ ] **Default branch:** `main`
+- [ ] **Branch protection on `main`:**
+  - Require a pull request before merging
+  - Require status checks to pass: `console`, `mobile`, `server` (job names from `.github/workflows/ci.yml`)
+  - Do not allow force pushes
+  - Do not allow deletions
+- [ ] **Private vulnerability reporting** enabled (Settings → Code security)
+- [ ] **Labels** exist: `bug`, `enhancement`, `documentation`, `good first issue`, `help wanted`, `security`, `needs-info`
+- [ ] **About:** description, homepage `https://getbrewledger.com`, topics (brewery, self-hosted, vue3, etc.)
+- [ ] **Social preview:** upload `docs/assets/social-preview.png`
 
-After pushing the public repo ([jackjusko/brewledger-oss](https://github.com/jackjusko/brewledger-oss)):
-
-- **Default branch:** `master` (CI workflow triggers on `master`)
-- **About description:** `Open-source brewery operations platform — inventory, production, compliance, taproom (self-hosted)`
-- **Website:** `https://getbrewledger.com`
-- **Topics:** `brewery`, `brewery-management`, `inventory`, `vue3`, `self-hosted`, `sqlite`, `taproom`, `ttb`, `open-source`, `capacitor`, `express` (keep existing brewery-related topics; add missing ones)
-- **Social preview:** Settings → General → Social preview → upload `docs/assets/social-preview.png`
-
-With GitHub CLI authenticated (`gh auth login`):
+Example `gh` topic/description update:
 
 ```powershell
 gh repo edit jackjusko/brewledger-oss --description "Open-source brewery operations platform — inventory, production, compliance, taproom (self-hosted)" --homepage "https://getbrewledger.com" --add-topic brewery --add-topic brewery-management --add-topic inventory --add-topic vue3 --add-topic self-hosted --add-topic sqlite --add-topic taproom --add-topic ttb --add-topic open-source --add-topic capacitor --add-topic express
 ```
 
-Social preview image upload remains UI-only (or GraphQL with a personal access token).
+## Appendix: private tree sync (owner-only, optional)
 
-## Publishing to GitHub
+Some maintainers may still keep a private development tree. That tree is **not** the OSS source of truth.
 
-After a successful export:
+- Contributors and co-maintainers **never** need `scripts/prepare-oss-export.ps1`.
+- If the owner develops privately, changes destined for OSS should be merged or cherry-picked **into** this public repo on `main`.
+- The export script remains a convenience for one-way scrubbed copies from a private root into a clean directory. It must not overwrite unreviewed public history without a careful review.
+
+### Export script (reference)
+
+**Script:** `scripts/prepare-oss-export.ps1` (typically run from a private checkout that still vendors the script)
 
 ```powershell
-cd oss-export
-git -c safe.directory="$PWD" init   # if on a network share
-git add .
-git commit -m "Initial open-source release"
-git branch -M main
-git remote add origin <your-github-repo-url>
-git push -u origin main
+.\scripts\prepare-oss-export.ps1
+.\scripts\prepare-oss-export.ps1 -OutputDir "D:\brewledger-public" -Force
 ```
 
-Create the public GitHub repository first (empty, no README) if it does not exist yet.
+Allowlisted paths include `server/`, `platforms/`, `docs/`, `scripts/`, `.github/`, and root docs (`README.md`, `FAQ.md`, `LICENSE`, `ARCHITECTURE.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, `GOVERNANCE.md`, `MAINTAINERS.md`, `CONTRIBUTING.md`, `.env.example`, `.gitignore`). The script scans for credential patterns and fails if hits are found.
 
-For subsequent updates, refresh with `prepare-oss-export.ps1 -Force`, review changes, commit, and push.
-
-## Keeping public docs accurate
-
-When adding features in the private repo, update export-facing documentation before publishing:
-
-- [README.md](../README.md) — overview and quick start
-- [README.md](README.md) — documentation index
-- [FAQ.md](../FAQ.md) — scope and integration questions
-- [.env.example](../.env.example) — new environment variables
-- [SECURITY.md](../SECURITY.md) — vulnerability reporting
-- `docs/assets/` and `.github/` — README visuals and community templates
-
-Avoid copying internal `changes/` analysis documents into the public export.
+After any optional private sync, review the diff on GitHub before pushing to `main`.

@@ -18,6 +18,7 @@
   <a href="docs/getting-started.md">Quick start</a> ·
   <a href="ARCHITECTURE.md">Architecture</a> ·
   <a href="docs/contributing.md">Contributing</a> ·
+  <a href="GOVERNANCE.md">Governance</a> ·
   <a href="FAQ.md">FAQ</a>
 </p>
 
@@ -118,6 +119,9 @@ For first-login navigation, troubleshooting, and optional mobile setup, see [doc
 | [docs/getting-started.md](docs/getting-started.md) | Full local setup and first-login tour |
 | [docs/deployment.md](docs/deployment.md) | Production checklist (TLS, static build, env vars) |
 | [docs/contributing.md](docs/contributing.md) | How to contribute, run tests, submit PRs |
+| [GOVERNANCE.md](GOVERNANCE.md) | Roles, decision making, path to maintainer |
+| [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Community standards |
+| [MAINTAINERS.md](MAINTAINERS.md) | Current maintainers |
 | [docs/README.md](docs/README.md) | Documentation index |
 | [FAQ.md](FAQ.md) | Common questions about scope, integrations, and licensing |
 | [ARCHITECTURE.md](ARCHITECTURE.md) | High-level system design |
@@ -131,7 +135,7 @@ See [.env.example](.env.example) for all variables.
 
 ## Contributing
 
-Pull requests are welcome—especially bug fixes, documentation improvements, and security hardening. See [docs/contributing.md](docs/contributing.md) for setup, test commands, and PR expectations. Use the issue templates when reporting bugs or proposing features.
+Pull requests are welcome—especially bug fixes, documentation improvements, and security hardening. This public repository (`main`) is the source of truth for OSS work. See [docs/contributing.md](docs/contributing.md) for setup, test commands, and PR expectations; [GOVERNANCE.md](GOVERNANCE.md) for roles; and the [Code of Conduct](CODE_OF_CONDUCT.md). Use the issue templates when reporting bugs or proposing features.
 
 ## License
 

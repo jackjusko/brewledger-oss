@@ -2,14 +2,15 @@
 
 ## Supported versions
 
-Security fixes are applied to the `master` branch of this repository. There is no formal release cadence or long-term support policy for older commits.
+Security fixes are applied to the `main` branch of this repository. There is no formal release cadence or long-term support policy for older tags.
 
 ## Reporting a vulnerability
 
 If you discover a security issue:
 
-1. **Do not** open a public issue with exploit details until it has been reviewed.
-2. Open a [GitHub Issue](https://github.com/jackjusko/brewledger-oss/issues) on this repository with a clear description of the problem, impact, and steps to reproduce if applicable. Prefer a private [security advisory](https://github.com/jackjusko/brewledger-oss/security/advisories/new) if the issue is sensitive.
+1. **Do not** open a public issue with exploit details.
+2. Prefer a private [GitHub security advisory](https://github.com/jackjusko/brewledger-oss/security/advisories/new) with impact, affected components, and reproduction steps if applicable.
+3. Public issues are appropriate only for **non-sensitive** configuration or documentation problems that do not enable abuse (for example, clarifying that an env var is missing from `.env.example`).
 
 There is **no bug bounty program** and no guaranteed response time. Reports are handled on a best-effort basis.
 

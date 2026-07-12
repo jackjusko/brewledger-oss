@@ -1,5 +1,6 @@
-# Prepare a clean open-source export of BrewLedger.
-# Copies allowlisted paths excluding node_modules, dist, secrets, and dev artifacts.
+# Optional owner-only helper: scrubbed one-way copy from a private tree into a clean directory.
+# The public GitHub repo (jackjusko/brewledger-oss, branch main) is the OSS source of truth.
+# Contributors and co-maintainers do NOT use this script—open PRs against the public repo.
 #
 # Usage:
 #   .\scripts\prepare-oss-export.ps1
@@ -66,11 +67,16 @@ $topLevel = @(
     "platforms",
     "docs",
     "scripts",
+    ".github",
     "README.md",
     "FAQ.md",
     "LICENSE",
     "ARCHITECTURE.md",
     "SECURITY.md",
+    "CODE_OF_CONDUCT.md",
+    "GOVERNANCE.md",
+    "MAINTAINERS.md",
+    "CONTRIBUTING.md",
     ".env.example",
     ".gitignore"
 )

@@ -68,7 +68,13 @@ See [SECURITY.md](SECURITY.md). There is no bug bounty program. Do not commit se
 
 ## Will you merge my pull request?
 
-Best-effort. PRs that fix bugs, improve docs, or harden security are welcome. Large feature additions may be reviewed slowly or declined if they don't fit the reference scope. See [docs/contributing.md](docs/contributing.md).
+Best-effort. PRs that fix bugs, improve docs, or harden security are welcome. Large feature additions may be reviewed slowly or declined if they don't fit the reference scope. See [docs/contributing.md](docs/contributing.md) and [GOVERNANCE.md](GOVERNANCE.md).
+
+Open pull requests against **`main`** on this public repository. It is the source of truth for open-source BrewLedger.
+
+## How do I become a maintainer?
+
+Start with helpful contributions, then see the contributor → triage → maintainer path in [GOVERNANCE.md](GOVERNANCE.md). There is no SLA and no automatic promotion.
 
 ## Data privacy
 

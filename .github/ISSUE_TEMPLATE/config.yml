@@ -6,3 +6,9 @@ contact_links:
   - name: FAQ
     url: https://github.com/jackjusko/brewledger-oss/blob/main/FAQ.md
     about: Scope, integrations, licensing, and common questions
+  - name: Code of Conduct
+    url: https://github.com/jackjusko/brewledger-oss/blob/main/CODE_OF_CONDUCT.md
+    about: Community standards and how to report conduct issues
+  - name: Governance
+    url: https://github.com/jackjusko/brewledger-oss/blob/main/GOVERNANCE.md
+    about: Roles, decision making, and path to maintainer
