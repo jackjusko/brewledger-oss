@@ -24,7 +24,7 @@
     "express": "^5.2.1",
     "express-rate-limit": "^8.2.1",
     "marked": "^17.0.3",
-    "node-fetch": "^2.7.0",
+    "node-fetch": "^3.3.2",
     "openai": "^4.0.0",
     "sqlite3": "^5.1.7",
     "stripe": "^20.2.0",
