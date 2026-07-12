@@ -1,8 +1,39 @@
+<p align="center">
+  <img src="docs/assets/logo.png" alt="BrewLedger" width="120" />
+</p>
+
+<p align="center">
+  <strong>Open-source brewery operations platform</strong><br/>
+  Inventory · Production · Compliance · Taproom — self-hosted on your hardware
+</p>
+
+<p align="center">
+  <a href="https://github.com/jackjusko/brewledger-oss/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-GPLv3-blue.svg" alt="License: GPLv3" /></a>
+  <a href="https://nodejs.org/"><img src="https://img.shields.io/badge/node-%3E%3D18-brightgreen.svg" alt="Node.js >= 18" /></a>
+  <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-3-42b883.svg" alt="Vue 3" /></a>
+  <a href="https://github.com/jackjusko/brewledger-oss/actions/workflows/ci.yml"><img src="https://github.com/jackjusko/brewledger-oss/actions/workflows/ci.yml/badge.svg" alt="CI" /></a>
+</p>
+
+<p align="center">
+  <a href="docs/getting-started.md">Quick start</a> ·
+  <a href="ARCHITECTURE.md">Architecture</a> ·
+  <a href="docs/contributing.md">Contributing</a> ·
+  <a href="FAQ.md">FAQ</a>
+</p>
+
 # BrewLedger
 
-Open-source brewery operations platform for inventory, production, compliance, and taproom workflows. BrewLedger is MIT-licensed and self-hosted—you run the API server and web console on your own hardware.
+Open-source brewery operations platform for inventory, production, compliance, and taproom workflows. BrewLedger is licensed under GPLv3 and self-hosted—you run the API server and web console on your own hardware.
 
 Brewery operators use BrewLedger to track what they have, what they brewed, and what they served or removed. Developers can clone the repo, run it locally, fork it, or contribute fixes and improvements.
+
+**Why open source?** BrewLedger was built as a full brewery operations product. Open-sourcing it makes the code a portfolio piece, a reference for other builders, and a starting point for anyone who wants to self-host brewery management software. Bug fixes, docs improvements, and security hardening are especially welcome.
+
+## Screenshots
+
+| Desktop console | Desktop console | Mobile app |
+|:---:|:---:|:---:|
+| ![Desktop console — inventory and operations](docs/assets/desktop-console-1.png) | ![Desktop console — reporting and batches](docs/assets/desktop-console-2.png) | ![Mobile app — floor workflows](docs/assets/mobile-app-1.png) |
 
 ## What's included
 
@@ -39,8 +70,8 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for a system overview.
 1. **Clone and configure**
 
    ```bash
-   git clone <your-fork-or-upstream-url>
-   cd brewledger
+   git clone https://github.com/jackjusko/brewledger-oss.git
+   cd brewledger-oss
    cp .env.example .env
    ```
 
@@ -100,8 +131,12 @@ See [.env.example](.env.example) for all variables.
 
 ## Contributing
 
-Pull requests are welcome. See [docs/contributing.md](docs/contributing.md) for setup, test commands, and PR expectations.
+Pull requests are welcome—especially bug fixes, documentation improvements, and security hardening. See [docs/contributing.md](docs/contributing.md) for setup, test commands, and PR expectations. Use the issue templates when reporting bugs or proposing features.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+GNU General Public License v3.0 — see [LICENSE](LICENSE).
+
+---
+
+*Hosted BrewLedger is also available at [getbrewledger.com](https://getbrewledger.com). This repository is the self-hosted open-source edition.*

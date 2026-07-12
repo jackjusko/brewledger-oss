@@ -1,0 +1,45 @@
+name: Feature request
+description: Suggest an improvement or new capability
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the idea. This repository is a reference / portfolio project with **best-effort** maintenance. Large scope expansions may be slow-reviewed or declined; focused improvements that fit existing patterns are easiest to accept.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem / motivation
+      description: What problem are you trying to solve? Who does this help?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: How would you like this to work?
+    validations:
+      required: true
+  - type: dropdown
+    id: component
+    attributes:
+      label: Primary area
+      options:
+        - Web console
+        - Mobile app
+        - API server
+        - Docs / DX
+        - Cross-cutting
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Other approaches you thought about (optional).
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Mockups, related issues, or constraints (optional).

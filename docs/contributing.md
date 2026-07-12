@@ -1,12 +1,12 @@
 # Contributing
 
-Thank you for your interest in BrewLedger. This repository is a reference implementation and portfolio project. Maintenance is best-effort—there is no SLA on issues or pull requests—but bug fixes, documentation improvements, and security hardening are especially welcome.
+Thank you for your interest in BrewLedger. Contributions help turn this portfolio / reference project into a healthier open-source codebase. Maintenance is best-effort—there is no SLA on issues or pull requests—but bug fixes, documentation improvements, and security hardening are especially welcome.
 
 ## Before you start
 
 1. Read [getting-started.md](getting-started.md) to run the stack locally.
 2. Skim [ARCHITECTURE.md](../ARCHITECTURE.md) to understand how server, console, and mobile clients fit together.
-3. Check open issues and existing pull requests to avoid duplicate work.
+3. Check [open issues](https://github.com/jackjusko/brewledger-oss/issues) and existing pull requests to avoid duplicate work. Prefer the [bug report](https://github.com/jackjusko/brewledger-oss/issues/new?template=bug_report.yml) or [feature request](https://github.com/jackjusko/brewledger-oss/issues/new?template=feature_request.yml) templates when filing something new.
 
 ## Repository layout
 
@@ -21,7 +21,7 @@ Both client apps share the same backend API and sync protocol. Business logic of
 
 ## Development workflow
 
-1. Fork the repository and create a branch from `main`.
+1. Fork the repository and create a branch from `master`.
 2. Make focused changes—one logical fix or feature per pull request when possible.
 3. Update documentation if your change affects setup, configuration, or behavior.
 4. Run relevant tests (see below).
@@ -76,4 +76,4 @@ Do not open public issues for sensitive vulnerabilities without coordinating fir
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the [MIT License](../LICENSE).
+By contributing, you agree that your contributions will be licensed under the [GNU General Public License v3.0](../LICENSE).

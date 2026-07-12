@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Getting started help
+    url: https://github.com/jackjusko/brewledger-oss/blob/main/docs/getting-started.md
+    about: Local setup and first-login guide before opening an issue
+  - name: FAQ
+    url: https://github.com/jackjusko/brewledger-oss/blob/main/FAQ.md
+    about: Scope, integrations, licensing, and common questions

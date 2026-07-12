@@ -1,0 +1,63 @@
+name: Bug report
+description: Report a bug so we can reproduce and fix it
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug. Maintenance is best-effort—clear reproduction steps help a lot.
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Where did you see the problem?
+      options:
+        - Web console (platforms/console)
+        - Mobile app (platforms/brewledger-app)
+        - API server (server)
+        - Documentation
+        - Other / unsure
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear summary of the bug.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Numbered steps that reliably trigger the issue.
+      placeholder: |
+        1. Go to...
+        2. Click...
+        3. See error...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Node version, OS, browser (if relevant), and how you are running BrewLedger (local, self-hosted, etc.).
+      placeholder: |
+        - Node.js:
+        - OS:
+        - Browser (if console):
+        - Deploy setup:
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Additional context
+      description: Logs, screenshots, or related issues (optional).

@@ -12,8 +12,8 @@ No database server is required—the API uses SQLite on disk.
 ## 1. Clone the repository
 
 ```bash
-git clone <your-fork-or-upstream-url>
-cd brewledger
+git clone https://github.com/jackjusko/brewledger-oss.git
+cd brewledger-oss
 ```
 
 ## 2. Configure environment variables

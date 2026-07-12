@@ -30,9 +30,10 @@ Allowlisted top-level paths:
 
 - `server/`
 - `platforms/`
-- `docs/`
+- `docs/` (includes `docs/assets/` — logo, screenshots, social preview)
 - `scripts/`
-- `README.md`, `FAQ.md`, `LICENSE`, `ARCHITECTURE.md`, `.env.example`, `.gitignore`
+- `.github/` (CI workflow, issue templates, PR template)
+- `README.md`, `FAQ.md`, `LICENSE`, `ARCHITECTURE.md`, `SECURITY.md`, `.env.example`, `.gitignore`
 
 ### What gets excluded
 
@@ -43,6 +44,40 @@ Post-copy removals include blog content paths and generated Capacitor web assets
 ### Secret scan
 
 After copy, the script scans for patterns including Discord webhooks, `sk_live_`, `sk_test_`, `whsec_`, AWS `AKIA` keys, and private LAN IPs in markdown. The export fails if any are found—fix the source before publishing.
+
+## GitHub presence assets
+
+Visual and community files for the public repo:
+
+| Path | Purpose |
+|------|---------|
+| `docs/assets/logo.png` | README hero logo |
+| `docs/assets/desktop-console-*.png` | README desktop screenshots |
+| `docs/assets/mobile-app-1.png` | README mobile screenshot |
+| `docs/assets/social-preview.png` | Upload in GitHub repo Settings → Social preview (1280×640) |
+| `.github/workflows/ci.yml` | Console Vitest CI |
+| `.github/ISSUE_TEMPLATE/` | Bug and feature issue forms |
+| `.github/pull_request_template.md` | PR checklist |
+
+Keep these under the private tree (not only in `oss-export/`) so the next `prepare-oss-export.ps1 -Force` run preserves them.
+
+### Public GitHub settings (one-time / occasional)
+
+After pushing the public repo ([jackjusko/brewledger-oss](https://github.com/jackjusko/brewledger-oss)):
+
+- **Default branch:** `master` (CI workflow triggers on `master`)
+- **About description:** `Open-source brewery operations platform — inventory, production, compliance, taproom (self-hosted)`
+- **Website:** `https://getbrewledger.com`
+- **Topics:** `brewery`, `brewery-management`, `inventory`, `vue3`, `self-hosted`, `sqlite`, `taproom`, `ttb`, `open-source`, `capacitor`, `express` (keep existing brewery-related topics; add missing ones)
+- **Social preview:** Settings → General → Social preview → upload `docs/assets/social-preview.png`
+
+With GitHub CLI authenticated (`gh auth login`):
+
+```powershell
+gh repo edit jackjusko/brewledger-oss --description "Open-source brewery operations platform — inventory, production, compliance, taproom (self-hosted)" --homepage "https://getbrewledger.com" --add-topic brewery --add-topic brewery-management --add-topic inventory --add-topic vue3 --add-topic self-hosted --add-topic sqlite --add-topic taproom --add-topic ttb --add-topic open-source --add-topic capacitor --add-topic express
+```
+
+Social preview image upload remains UI-only (or GraphQL with a personal access token).
 
 ## Publishing to GitHub
 
@@ -70,5 +105,7 @@ When adding features in the private repo, update export-facing documentation bef
 - [README.md](README.md) — documentation index
 - [FAQ.md](../FAQ.md) — scope and integration questions
 - [.env.example](../.env.example) — new environment variables
+- [SECURITY.md](../SECURITY.md) — vulnerability reporting
+- `docs/assets/` and `.github/` — README visuals and community templates
 
 Avoid copying internal `changes/` analysis documents into the public export.

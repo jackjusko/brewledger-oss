@@ -1,7 +1,7 @@
 {
   "name": "console-app",
   "private": false,
-  "license": "MIT",
+  "license": "GPL-3.0-only",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
